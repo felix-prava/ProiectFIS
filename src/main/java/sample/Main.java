@@ -26,6 +26,7 @@ public class Main extends Application {
         //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
         primaryStage.setTitle("Dentisti-Tg-Jiu");
 
+        //Prima fereastra(cea de inceput)
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
@@ -54,10 +55,12 @@ public class Main extends Application {
         Label l3 = new Label("        Ai deja cont?");
         GridPane.setConstraints(l3, 2, 1);
 
-        TextField text1 = new TextField("Username");
+        TextField text1 = new TextField();
+        text1.setPromptText("Username");
         GridPane.setConstraints(text1, 2, 2);
 
-        TextField text2 = new TextField("Parolă");
+        TextField text2 = new TextField();
+        text2.setPromptText("Parolă");
         GridPane.setConstraints(text2, 2, 3);
 
         Button signIn = new Button("Sign In");
@@ -75,8 +78,10 @@ public class Main extends Application {
         Label textParolaUitata = new Label("                 Introdu username-ul");
         Button parola_Uitata = new Button("Gata! ");
         TextField usernameParola = new TextField();
+
         HBox h1 = new HBox(20);
         h1.getChildren().addAll(usernameParola, parola_Uitata);
+
         VBox parolaUitata = new VBox(20);
         parolaUitata.getChildren().addAll(textParolaUitata, h1);
 
@@ -87,8 +92,11 @@ public class Main extends Application {
 
         parola_Uitata.setOnAction(e ->
                 {
-                    AlertBox.display("Resetare parola", "Ti-a fost trimis un mail de resetare parola la acest username!");
-                    primaryStage.setScene(scene);
+                    if (!usernameParola.getText().equals("")) {
+                        AlertBox.display("Resetare parola", "Ti-a fost trimis un mail de resetare parola la acest username!");
+                        primaryStage.setScene(scene);
+                    } else
+                        AlertBox.display("Resetare parola", "Username gresit!");
                 }
         );
 
