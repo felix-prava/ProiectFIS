@@ -1,14 +1,15 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -19,13 +20,18 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
+
+        Scene scene;
+
+        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
         primaryStage.setTitle("Dentisti-Tg-Jiu");
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(8);
         grid.setHgap(10);
+
+        scene = new Scene(grid, 520, 250);
 
         Label l1 = new Label("Bine ati venit!");
         GridPane.setConstraints(l1, 1, 0);
@@ -62,9 +68,31 @@ public class Main extends Application {
 
 
         grid.getChildren().addAll(l1, l2, l2a, l2b, buttonA, l3a, l3, text1, text2, signIn, forgot);
+        grid.setAlignment(Pos.CENTER);
 
 
-        Scene scene = new Scene(grid, 520, 375);
+        //Buton 'Ai uitat parola?'(forgot) + fereastra noua
+        Label textParolaUitata = new Label("                 Introdu username-ul");
+        Button parola_Uitata = new Button("Gata! ");
+        TextField usernameParola = new TextField();
+        HBox h1 = new HBox(20);
+        h1.getChildren().addAll(usernameParola, parola_Uitata);
+        VBox parolaUitata = new VBox(20);
+        parolaUitata.getChildren().addAll(textParolaUitata, h1);
+
+        Scene amUitatParola = new Scene(parolaUitata, 300, 200);
+        forgot.setOnAction(e -> primaryStage.setScene(amUitatParola));
+
+        //Buton Gata! + mesaj corespunzator
+
+        parola_Uitata.setOnAction(e ->
+                {
+                    AlertBox.display("Resetare parola", "Ti-a fost trimis un mail de resetare parola la acest username!");
+                    primaryStage.setScene(scene);
+                }
+        );
+
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
