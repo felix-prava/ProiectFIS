@@ -1,4 +1,4 @@
-package sample;
+package sample.Users;
 
 public class Persoana {
 

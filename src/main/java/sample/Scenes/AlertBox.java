@@ -1,4 +1,4 @@
-package sample;
+package sample.Scenes;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
