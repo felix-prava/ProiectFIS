@@ -91,8 +91,6 @@ public class LoginScene {
         forgot.setOnAction(e -> primaryStage.setScene(amUitatParola));
 
         //Buton Gata! + mesaj corespunzator
-
-
         parola_Uitata.setOnAction(e ->
                 {
                     if (!usernameParola.getText().equals("")) {
