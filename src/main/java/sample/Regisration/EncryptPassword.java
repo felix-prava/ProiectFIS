@@ -23,8 +23,7 @@ public class EncryptPassword {
 
         byte[] hashedPassword = md.digest(text.getBytes(StandardCharsets.UTF_8));
 
-        return new String(hashedPassword, StandardCharsets.UTF_8)
-                .replace("\"", "");
+        return new String(hashedPassword, StandardCharsets.UTF_8).replace("\"", "");
 
     }
 }

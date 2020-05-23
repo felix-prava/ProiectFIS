@@ -1,17 +1,11 @@
 package sample;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Regisration.EncryptPassword;
+import sample.Regisration.ReadingJSON;
 import sample.Scenes.LoginScene;
-import sample.Users.Persoana;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Iterator;
 
 public class Main extends Application {
 
@@ -23,37 +17,15 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Scene scene;
         scene = LoginScene.test(primaryStage);
-
+        ReadingJSON.citireSignIn("a", "b");
+        //if("]yޒ\u0013!��8�!\u000BE��X�=l��jO��vg\u0006�\u000E��".equals(EncryptPassword.encryptPassword("Felix","test")))
+        //System.out.println(EncryptPassword.encryptPassword("Andrei","test")+"!");
+        System.out.println(EncryptPassword.encryptPassword("Test24", "test24") + "!");
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Doctori Tg-Jiu");
         primaryStage.show();
     }
 
-    private void loginUser(Persoana user) {
-        try {
-            byte[] jsonData = Files.readAllBytes(Paths.get("DB2.json"));
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode rootNode = objectMapper.readTree(jsonData);
-            JsonNode userNode = rootNode.path("nume_de_utilizator");
-
-
-            Iterator<JsonNode> elements = userNode.elements();
-            while (elements.hasNext()) {
-                JsonNode username = elements.next();
-                System.out.println(username.asText());
-                if (username.asText().equals(user.getUser())) {
-                    JsonNode parola = username.findParent("nume_de_utilizator").path("parola");
-                    if (parola.asText().equals(user.getParola()))
-                        System.out.println("E ok");
-                    else
-                        System.out.println("Parola gresita");
-                }
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
 
