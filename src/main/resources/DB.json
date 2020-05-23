@@ -1,14 +1,17 @@
 [
   {
     "nume_de_utilizator": "Felix",
-    "parola": "]yޒ\u0013!��8�!\u000BE��X�=l��jO��vg\u0006�\u000E��"
+    "parola": "]yޒ\u0013!��8�!\u000BE��X�=l��jO��vg\u0006�\u000E��",
+    "rol": "Doctor"
   },
   {
     "nume_de_utilizator": "Test24",
-    "parola": "testtest"
+    "parola": "}_\u000F��E�>���zk�fJ\u0010�дK�حB*%�:s�\u0014",
+    "rol": "Client"
   },
   {
-    "nume_de_utilizator": "Test2",
-    "parola": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578"
+    "nume_de_utilizator": "Andrei",
+    "parola": "И�Vg�{��SJ�e��\u0019��K�,�W*��s�b\u000B�&",
+    "rol": "Client"
   }
 ]

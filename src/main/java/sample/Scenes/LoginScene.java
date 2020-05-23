@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.Regisration.EncryptPassword;
+import sample.Regisration.ReadingJSON;
 import sample.Users.Persoana;
 
 import java.io.File;
@@ -82,11 +83,14 @@ public class LoginScene {
             System.out.println(user.getParola());
             System.out.println(user.getUser() + "+" + user.getParola() + "!");
 
-            try {
-                loginUser(user);
-            } catch (FileNotFoundException fileNotFoundException) {
-                fileNotFoundException.printStackTrace();
-            }
+            if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 1) {
+                Scene newScene = SignInDoctor.inregis(primaryStage, scene);
+                primaryStage.setScene(newScene);
+                System.out.println("Doctor");
+            } else if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 2)
+                System.out.println("Client");
+            else System.out.println("Greseala!");
+
         });
         GridPane.setConstraints(signIn, 2, 4);
         Button forgot = new Button("Ai uitat parola?");
