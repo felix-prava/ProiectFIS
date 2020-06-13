@@ -74,14 +74,13 @@ public class LoginScene {
         {
             String numeTextField = text1.getText();
             String parolaTextField = text2.getText();
-            String encryptPass = EncryptPassword.encryptPassword(numeTextField, parolaTextField);
+            String encryptPass = EncryptPassword.encryptPassword(parolaTextField, numeTextField);
 
             user.setUser(numeTextField);
             user.setParola(encryptPass);
 
-            System.out.println(user.getUser());
-            System.out.println(user.getParola());
-            System.out.println(user.getUser() + "+" + user.getParola() + "!");
+            System.out.println(user.getUser() + "+" + user.getParola());
+            System.out.println(encryptPass);
 
             if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 1) {
                 Scene newScene = SignInDoctor.inregis(primaryStage, scene);
@@ -160,7 +159,7 @@ public class LoginScene {
             while (elements.hasNext()) {
                 JsonNode username = elements.next();
                 System.out.println(username);
-                if (username.asText().equals(user.getUser())) {
+                if (username.asText().compareTo(user.getUser()) == 0) {
                     JsonNode parola = username.findParent("nume_de_utilizator").path("parola");
                     if (parola.asText().equals(user.getParola()))
                         System.out.println("E ok");
