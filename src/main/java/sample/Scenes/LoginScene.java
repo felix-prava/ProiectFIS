@@ -1,8 +1,5 @@
 package sample.Scenes;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -16,13 +13,6 @@ import javafx.stage.Stage;
 import sample.Regisration.EncryptPassword;
 import sample.Regisration.ReadingJSON;
 import sample.Users.Persoana;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Iterator;
 
 public class LoginScene {
     public static Scene test(Stage primaryStage) {
@@ -80,15 +70,17 @@ public class LoginScene {
             user.setParola(encryptPass);
 
             System.out.println(user.getUser() + "+" + user.getParola());
-            System.out.println(encryptPass);
+            //System.out.println(encryptPass);
 
             if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 1) {
                 Scene newScene = SignInDoctor.inregis(primaryStage, scene);
                 primaryStage.setScene(newScene);
                 System.out.println("Doctor");
-            } else if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 2)
+            } else if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 2) {
+                Scene newScene = SignInClient.inregis(primaryStage, scene);
+                primaryStage.setScene(newScene);
                 System.out.println("Client");
-            else System.out.println("Greseala!");
+            } else System.out.println("Greseala!");
 
         });
         GridPane.setConstraints(signIn, 2, 4);
@@ -122,63 +114,4 @@ public class LoginScene {
 
     }
 
-    private static void loginUser(Persoana user) throws FileNotFoundException {
-        try {
-
-            /*
-
-            //////////////////////////////////////////////////////////////
-            ObjectMapper objectMapper = new ObjectMapper();
-            ArrayNode arrayNode = (ArrayNode)  objectMapper.readTree(new File("src\\main\\resources\\DB.json"));
-            System.out.println(arrayNode.size());
-            for(int i = 0; i < arrayNode.size(); i++) {
-                JsonNode arrayElement = arrayNode.get(i);
-                JsonNode username = arrayElement.get("nume_de_utilizator");
-                if(username.textValue().equals("Test1")) {
-                    System.out.println(username);
-                    JsonNode pass= arrayElement.get("parola");
-                    if(pass.textValue().equals("testtest")) {
-                        System.out.println("SUCCESS");
-                    }
-                    else System.out.println("PAROLA GRESITA");
-                }
-            }
-            System.out.println("user nu a fost gasit") ;
-            ////////////////////////////////////////////////////////////////*/
-
-
-            byte[] jsonData = Files.readAllBytes(Paths.get("src\\main\\resources\\DB.json"));
-            ObjectMapper objectMapper = new ObjectMapper();
-            ArrayNode arrayNode = (ArrayNode) objectMapper.readTree(new File("src\\main\\resources\\DB.json"));
-
-            JsonNode rootNode = objectMapper.readTree(jsonData);
-            JsonNode userNode = rootNode.path("nume_de_utilizator");
-
-
-            Iterator<JsonNode> elements = userNode.elements();
-            while (elements.hasNext()) {
-                JsonNode username = elements.next();
-                System.out.println(username);
-                if (username.asText().compareTo(user.getUser()) == 0) {
-                    JsonNode parola = username.findParent("nume_de_utilizator").path("parola");
-                    if (parola.asText().equals(user.getParola()))
-                        System.out.println("E ok");
-                    else
-                        System.out.println("Parola gresita");
-                }
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        /*
-            File jsonData = new File("src\\main\\resources\\DB.json");
-            JSONTokener jsonDataFile = new JSONTokener(new FileInputStream(jsonData));
-            JSONObject jsonObject = new JSONObject(jsonDataFile);
-
-            System.out.println(jsonObject.getString("nume_de_utilizator"));
-            //System.out.println(jsonObject.getInt("varsta"));
-        */
-    }
 }

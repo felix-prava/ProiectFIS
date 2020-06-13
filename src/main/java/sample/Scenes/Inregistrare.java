@@ -15,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.json.simple.JSONObject;
 import sample.Regisration.EncryptPassword;
 
 import java.io.File;
@@ -38,6 +37,8 @@ public class Inregistrare {
         GridPane.setConstraints(l24b, 0, 2);
         Label l24c = new Label("Email:");
         GridPane.setConstraints(l24c, 0, 3);
+        Label l24d = new Label("Adresă:");
+        GridPane.setConstraints(l24d, 0, 4);
         TextField text1 = new TextField();
         GridPane.setConstraints(text1, 1, 0);
         TextField text2 = new TextField();
@@ -53,10 +54,12 @@ public class Inregistrare {
         GridPane.setConstraints(comboBox, 1, 2);
         TextField text4 = new TextField();
         GridPane.setConstraints(text4, 1, 3);
+        TextField text5 = new TextField();
+        GridPane.setConstraints(text5, 1, 4);
         Button ok = new Button("Gata!");
         ok.setOnAction(e ->
         {
-           EncryptPassword encrypt = new EncryptPassword();
+            EncryptPassword encrypt = new EncryptPassword();
             ObjectMapper mapper = new ObjectMapper();
             File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
             JsonNode node = mapper.createObjectNode();
@@ -65,6 +68,8 @@ public class Inregistrare {
             ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
             ((ObjectNode) node).put("rol", comboBox.getValue().toString());
             ((ObjectNode) node).put("email", text4.getText());
+            ((ObjectNode) node).put("adresa", text5.getText());
+            ((ObjectNode) node).put("profil", "");
             try {
                 ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                 //System.out.println(root.get(0));
@@ -77,8 +82,8 @@ public class Inregistrare {
             AlertBox.display("Cont nou", "Înregistrarea a fost realizată cu succes!");
             primaryStage.setScene(scene);
         });
-        GridPane.setConstraints(ok, 1, 4);
-        grid2.getChildren().addAll(l24, l24a, l24b, l24c, text1, text2, comboBox, text4, ok);
+        GridPane.setConstraints(ok, 1, 5);
+        grid2.getChildren().addAll(l24, l24a, l24b, l24c, l24d, text1, text2, comboBox, text4, text5, ok);
         grid2.setAlignment(Pos.CENTER);
         return sceneInregistrare;
     }
