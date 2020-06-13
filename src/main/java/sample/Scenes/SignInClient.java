@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class SignInClient {
 
-    public static Scene inregis(Stage primaryStage, Scene scene) {
+    public static Scene inregis(Stage primaryStage, Scene scene, String numeUtilizator) {
 
         GridPane grid2 = new GridPane();
         grid2.setPadding(new Insets(10, 10, 10, 10));
@@ -32,7 +32,7 @@ public class SignInClient {
         Button listaDoctori = new Button("Lista de doctori");
         listaDoctori.setOnAction(e ->
         {
-            Scene newScene = ListaDoctori.inregis(primaryStage, scene);
+            Scene newScene = ListaDoctori.inregis(primaryStage, scene, numeUtilizator);
             primaryStage.setScene(newScene);
             System.out.println("Alabalalalala");
         });

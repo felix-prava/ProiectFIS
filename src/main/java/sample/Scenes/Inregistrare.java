@@ -69,7 +69,7 @@ public class Inregistrare {
             ((ObjectNode) node).put("rol", comboBox.getValue().toString());
             ((ObjectNode) node).put("email", text4.getText());
             ((ObjectNode) node).put("adresa", text5.getText());
-            ((ObjectNode) node).put("profil", "");
+            ((ObjectNode) node).put("profil", "Necompletat");
             try {
                 ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                 //System.out.println(root.get(0));
