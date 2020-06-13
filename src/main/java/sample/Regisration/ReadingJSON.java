@@ -22,12 +22,12 @@ public class ReadingJSON {
                 //System.out.println(test1.getString("spouse"));
                 //System.out.println(emails.get(i));
 
-                System.out.println(Lista.getJSONObject(i).getString("parola"));
-                System.out.println(parola);
+                //System.out.println(Lista.getJSONObject(i).getString("parola"));
+                //System.out.println(parola);
                 //System.out.println(Lista.getJSONObject(i).getString("nume_de_utilizator"));
                 if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(nume)) {
-                    System.out.println(Lista.getJSONObject(i).getString("parola"));
-                    System.out.println(parola);
+                    //System.out.println(Lista.getJSONObject(i).getString("parola"));
+                    //System.out.println(parola);
 
                     if (Lista.getJSONObject(i).getString("parola").compareTo(parola) == 0)
                         if (Lista.getJSONObject(i).getString("rol").equals("Doctor"))
