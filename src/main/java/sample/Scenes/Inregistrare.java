@@ -56,10 +56,11 @@ public class Inregistrare {
         Button ok = new Button("Gata!");
         ok.setOnAction(e ->
         {
-            EncryptPassword encrypt = new EncryptPassword();
+           EncryptPassword encrypt = new EncryptPassword();
             ObjectMapper mapper = new ObjectMapper();
             File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
             JsonNode node = mapper.createObjectNode();
+            System.out.println(text1.getText() + " " + text2.getText());
             ((ObjectNode) node).put("nume_de_utilizator", text1.getText());
             ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
             ((ObjectNode) node).put("rol", comboBox.getValue().toString());

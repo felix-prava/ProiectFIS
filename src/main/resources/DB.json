@@ -16,5 +16,59 @@
     "parola": "��B��\u001C\u0014���șo�$'�A�d��L���\u001BxR�U",
     "rol": "Doctor",
     "email": ""
+  },
+  {
+    "nume_de_utilizator": "aaaasa",
+    "parola": "��Ħ�m2�W��\t��\u001Cq\u0016$��s�\np��ߙ�\u0011@",
+    "rol": "Doctor",
+    "email": "dasdasda"
+  },
+  {
+    "nume_de_utilizator": "Maria",
+    "parola": "�-�-���A�T\u001B��P�\u0003\u0012����=߷���~\u0012]",
+    "rol": "Doctor",
+    "email": "anaaremare@yahoo.com"
+  },
+  {
+    "nume_de_utilizator": "maria",
+    "parola": "�#������z�J�\u0013,Zf��x�\u0003�5\u0018�}��\bA�@",
+    "rol": "Doctor",
+    "email": "maria@yahoo.com"
+  },
+  {
+    "nume_de_utilizator": "testtest",
+    "parola": "\r\u000E�궇9Sb��\u000ELy\u001AT�l���\\^�|�߳�m�",
+    "rol": "Client",
+    "email": "adsa"
+  },
+  {
+    "nume_de_utilizator": "ana",
+    "parola": "�\u0014�\\m&\u001CA�ä�u��53\r��!�����>8n�Ͼ",
+    "rol": "Doctor",
+    "email": "aaaaaa"
+  },
+  {
+    "nume_de_utilizator": "tibiurdea",
+    "parola": "�\u0001�b\u0010$��\u00149�)�V�\nB�e��Xc��]^h�`��",
+    "rol": "Client",
+    "email": "rari@yahoo.com"
+  },
+  {
+    "nume_de_utilizator": "damian",
+    "parola": "�������\u001F���xעʳ=d��[�13�0�����",
+    "rol": "Doctor",
+    "email": "asdsa@yahoo.com"
+  },
+  {
+    "nume_de_utilizator": "aida",
+    "parola": "Q3�~ZJ���a�'?��\u000F��}��4����R��\u0000�",
+    "rol": "Doctor",
+    "email": "aaadsac@yahoo.com"
+  },
+  {
+    "nume_de_utilizator": "felix",
+    "parola": "����=nX�\u001C۫��:�W.����\u0000c�C�2��\u001CM",
+    "rol": "Doctor",
+    "email": "aa@yahoo.com"
   }
 ]
