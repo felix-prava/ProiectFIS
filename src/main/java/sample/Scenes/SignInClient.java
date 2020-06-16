@@ -156,7 +156,9 @@ public class SignInClient {
 
 
         grid2.getChildren().addAll(programare, l1, t1, l2, t2, l3, t3, l4, t4, l5, t5, gata);
+
         grid2.setAlignment(Pos.CENTER);
+
         return sceneInregistrare;
     }
 
