@@ -122,6 +122,8 @@ public class SignInClient {
         TextField t5 = new TextField();
         GridPane.setConstraints(t5, 1, 4);
 
+        TextField t6 = new TextField();
+
 
         Button gata = new Button("Gata");
         gata.setOnAction(e ->
