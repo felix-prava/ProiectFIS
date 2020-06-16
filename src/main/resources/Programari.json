@@ -7,5 +7,14 @@
     "luna": "06",
     "alte_detalii": "Nu sunt",
     "mesaj_doctor": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "Andrei",
+    "nume_doctor": "",
+    "ora": "",
+    "ziua": "",
+    "luna": "",
+    "alte_detalii": "",
+    "mesaj_doctor": "Necompletat"
   }
 ]

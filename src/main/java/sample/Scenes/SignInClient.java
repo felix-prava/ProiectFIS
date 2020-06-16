@@ -122,6 +122,8 @@ public class SignInClient {
         TextField t5 = new TextField();
         GridPane.setConstraints(t5, 1, 4);
 
+        TextField t6 = new TextField();
+
 
         Button gata = new Button("Gata");
         gata.setOnAction(e ->
@@ -156,7 +158,9 @@ public class SignInClient {
 
 
         grid2.getChildren().addAll(programare, l1, t1, l2, t2, l3, t3, l4, t4, l5, t5, gata);
+
         grid2.setAlignment(Pos.CENTER);
+
         return sceneInregistrare;
     }
 
