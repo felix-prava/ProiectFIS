@@ -139,6 +139,7 @@ public class SignInClient {
             ((ObjectNode) node).put("luna", t4.getText());
             ((ObjectNode) node).put("alte_detalii", t5.getText());
             ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
+            ((ObjectNode) node).put("status", "In asteptare");
             try {
                 ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                 //System.out.println(root.get(0));
