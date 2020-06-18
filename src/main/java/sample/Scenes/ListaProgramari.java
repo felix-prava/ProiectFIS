@@ -12,8 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
-import sample.Users.Doctor;
-import sample.Users.Programari;
+import sample.Users.Programare;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,35 +22,35 @@ public class ListaProgramari {
     public static Scene inregis(Stage primaryStage, Scene scene, String numeUtilizator) {
 
 
-        TableColumn<Programari, String> nameColumn = new TableColumn<>("Nume doctor");
+        TableColumn<Programare, String> nameColumn = new TableColumn<>("Nume doctor");
         nameColumn.setMinWidth(160);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("numeDoctor"));
 
-        TableColumn<Programari, String> oraColumn = new TableColumn<>("Ora");
+        TableColumn<Programare, String> oraColumn = new TableColumn<>("Ora");
         oraColumn.setMinWidth(160);
         oraColumn.setCellValueFactory(new PropertyValueFactory<>("ora"));
 
-        TableColumn<Programari, String> ziColumn = new TableColumn<>("Zi");
+        TableColumn<Programare, String> ziColumn = new TableColumn<>("Zi");
         ziColumn.setMinWidth(220);
         ziColumn.setCellValueFactory(new PropertyValueFactory<>("zi"));
 
-        TableColumn<Programari, String> lunaColumn = new TableColumn<>("Luna");
+        TableColumn<Programare, String> lunaColumn = new TableColumn<>("Luna");
         lunaColumn.setMinWidth(260);
         lunaColumn.setCellValueFactory(new PropertyValueFactory<>("luna"));
 
-        TableColumn<Programari, String> detaliuColumn = new TableColumn<>("ALte Detalii");
+        TableColumn<Programare, String> detaliuColumn = new TableColumn<>("ALte Detalii");
         detaliuColumn.setMinWidth(260);
         detaliuColumn.setCellValueFactory(new PropertyValueFactory<>("alte_detalii"));
 
-        TableColumn<Programari, String> mesajColumn = new TableColumn<>("Mesajul Doctorului");
+        TableColumn<Programare, String> mesajColumn = new TableColumn<>("Mesajul Doctorului");
         mesajColumn.setMinWidth(360);
         mesajColumn.setCellValueFactory(new PropertyValueFactory<>("mesaj_doctor"));
 
-        TableColumn<Programari, String> statusColumn = new TableColumn<>("Statusul Programării");
+        TableColumn<Programare, String> statusColumn = new TableColumn<>("Statusul Programării");
         statusColumn.setMinWidth(260);
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        TableView<Programari> table = new TableView<>();
+        TableView<Programare> table = new TableView<>();
         table.setItems(getProgramari(numeUtilizator));
         //table.setItems(getDoctor());
         table.getColumns().addAll(nameColumn, oraColumn, ziColumn, lunaColumn, detaliuColumn, mesajColumn, statusColumn);
@@ -76,8 +75,8 @@ public class ListaProgramari {
         return scene2;
     }
 
-    public static ObservableList<Programari> getProgramari(String numeUtilizator) {
-        ObservableList<Programari> programari = FXCollections.observableArrayList();
+    public static ObservableList<Programare> getProgramari(String numeUtilizator) {
+        ObservableList<Programare> programari = FXCollections.observableArrayList();
         String first = "src\\main\\resources\\Programari.json";
         String contents = null;
         try {
@@ -93,7 +92,7 @@ public class ListaProgramari {
                     String e = Lista.getJSONObject(i).getString("alte_detalii");
                     String f = Lista.getJSONObject(i).getString("mesaj_doctor");
                     String g = Lista.getJSONObject(i).getString("status");
-                    programari.add(new Programari(a, b, c, d, e, f, g));
+                    programari.add(new Programare(a, b, c, d, e, f, g));
                 }
             }
         } catch (IOException e) {

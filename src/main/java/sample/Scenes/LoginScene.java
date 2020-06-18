@@ -73,7 +73,7 @@ public class LoginScene {
             //System.out.println(encryptPass);
 
             if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 1) {
-                Scene newScene = SignInDoctor.inregis(primaryStage, scene);
+                Scene newScene = SignInDoctor.inregis(primaryStage, scene, numeTextField);
                 primaryStage.setScene(newScene);
                 System.out.println("Doctor");
             } else if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 2) {

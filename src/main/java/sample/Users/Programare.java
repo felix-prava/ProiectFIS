@@ -1,6 +1,6 @@
 package sample.Users;
 
-public class Programari {
+public class Programare {
     protected String numeDoctor;
     protected String ora;
     protected String zi;
@@ -9,7 +9,7 @@ public class Programari {
     protected String mesaj;
     protected String status;
 
-    public Programari() {
+    public Programare() {
         this.numeDoctor = "";
         this.ora = "";
         this.zi = "";
@@ -19,7 +19,7 @@ public class Programari {
         this.status = "";
     }
 
-    public Programari(String a, String b, String c, String d, String e, String f, String g) {
+    public Programare(String a, String b, String c, String d, String e, String f, String g) {
         this.numeDoctor = a;
         this.ora = b;
         this.zi = c;
