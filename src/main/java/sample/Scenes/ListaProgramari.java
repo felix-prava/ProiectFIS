@@ -107,7 +107,7 @@ public class ListaProgramari {
 
         TableColumn<Programare, String> nameColumn = new TableColumn<>("Nume client");
         nameColumn.setMinWidth(160);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("numeDoctor"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("numeClient"));
 
         TableColumn<Programare, String> oraColumn = new TableColumn<>("Ora");
         oraColumn.setMinWidth(160);
@@ -175,7 +175,7 @@ public class ListaProgramari {
                     String e = Lista.getJSONObject(i).getString("alte_detalii");
                     String f = Lista.getJSONObject(i).getString("mesaj_doctor");
                     String g = Lista.getJSONObject(i).getString("status");
-                    programari.add(new Programare(a, b, c, d, e, f, g, "a"));
+                    programari.add(new Programare("Nu conteaza", b, c, d, e, f, g, a));
                 }
             }
         } catch (IOException e) {

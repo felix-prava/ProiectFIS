@@ -11,6 +11,7 @@ public class Programare {
     protected String numeClient;
 
     public Programare() {
+        this.numeClient = "";
         this.numeDoctor = "";
         this.ora = "";
         this.zi = "";
@@ -36,6 +37,13 @@ public class Programare {
         this.ora = b;
     }
 
+    public String getNumeClient() {
+        return numeClient;
+    }
+
+    public void setNumeClient(String numeClient) {
+        this.numeClient = numeClient;
+    }
 
     public String getNumeDoctor() {
         return numeDoctor;
