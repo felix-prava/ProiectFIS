@@ -140,7 +140,7 @@ public class ListaProgramari {
 
         Button inapoi = new Button("Înapoi");
         inapoi.setOnAction(e -> {
-            Scene scene2 = SignInClient.inregis(primaryStage, scene, numeUtilizator);
+            Scene scene2 = SignInDoctor.inregis(primaryStage, scene, numeUtilizator);
             primaryStage.setScene(scene2);
         });
 

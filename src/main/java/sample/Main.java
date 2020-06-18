@@ -30,7 +30,6 @@ public class Main extends Application {
 
         try {
             String contents = new String((Files.readAllBytes(Paths.get(first))));
-            //JSONObject o = new JSONObject(contents);
             ObjectMapper mapper = new ObjectMapper();
             File jsonFile = Paths.get(first).toFile();
             ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
@@ -42,8 +41,6 @@ public class Main extends Application {
                     if (node.path("nume_de_utilizator").asText().equals("Test1")) {
                         ((ObjectNode) node).put("parola", "alabala");
                         mapper.writeValue(jsonFile, root);
-
-
                     }
                 }
 
