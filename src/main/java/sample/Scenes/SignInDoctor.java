@@ -34,8 +34,13 @@ public class SignInDoctor {
         javafx.scene.control.Label l24c = new javafx.scene.control.Label("Test4:");
         GridPane.setConstraints(l24c, 0, 3);
 
-        Button listaDoctori = new Button("Editare profil");
-        GridPane.setConstraints(listaDoctori, 2, 0);
+        Button profil = new Button("Editare profil");
+        profil.setOnAction(e ->
+        {
+            Scene newScene = EditareProfil.editareProfil(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
+        GridPane.setConstraints(profil, 2, 0);
 
         javafx.scene.control.TextField text2 = new javafx.scene.control.TextField();
         GridPane.setConstraints(text2, 1, 1);
@@ -53,7 +58,7 @@ public class SignInDoctor {
             primaryStage.setScene(scene);
         });
         GridPane.setConstraints(ok, 1, 4);
-        grid2.getChildren().addAll(programare, listaProg, listaDoctori, ultimaProg, ok);
+        grid2.getChildren().addAll(programare, listaProg, profil, ultimaProg, ok);
         grid2.setAlignment(Pos.CENTER);
         return sceneInregistrare;
     }
