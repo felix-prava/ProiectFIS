@@ -40,7 +40,7 @@ public class SignInClient {
         Button listaProg = new Button("Lista Programari");
         listaProg.setOnAction(e ->
         {
-            Scene newScene = ListaProgramari.inregis(primaryStage, scene, numeUtilizator);
+            Scene newScene = ListaProgramari.listaProgramari(primaryStage, scene, numeUtilizator);
             primaryStage.setScene(newScene);
         });
         GridPane.setConstraints(listaProg, 0, 2);

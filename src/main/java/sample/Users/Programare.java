@@ -1,6 +1,6 @@
 package sample.Users;
 
-public class Programari {
+public class Programare {
     protected String numeDoctor;
     protected String ora;
     protected String zi;
@@ -8,8 +8,10 @@ public class Programari {
     protected String detalii;
     protected String mesaj;
     protected String status;
+    protected String numeClient;
 
-    public Programari() {
+    public Programare() {
+        this.numeClient = "";
         this.numeDoctor = "";
         this.ora = "";
         this.zi = "";
@@ -19,7 +21,7 @@ public class Programari {
         this.status = "";
     }
 
-    public Programari(String a, String b, String c, String d, String e, String f, String g) {
+    public Programare(String a, String b, String c, String d, String e, String f, String g, String h) {
         this.numeDoctor = a;
         this.ora = b;
         this.zi = c;
@@ -27,6 +29,20 @@ public class Programari {
         this.detalii = e;
         this.mesaj = f;
         this.status = g;
+        this.numeClient = h;
+    }
+
+    public Programare(String a, String b) {
+        this.numeClient = a;
+        this.ora = b;
+    }
+
+    public String getNumeClient() {
+        return numeClient;
+    }
+
+    public void setNumeClient(String numeClient) {
+        this.numeClient = numeClient;
     }
 
     public String getNumeDoctor() {

@@ -1,6 +1,5 @@
 package sample;
 
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -8,15 +7,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import sample.Scenes.LoginScene;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Iterator;
 
 public class Main extends Application {
 
@@ -29,7 +25,8 @@ public class Main extends Application {
         Scene scene;
         scene = LoginScene.test(primaryStage);
 
-        String first = "src\\main\\resources\\DB3.json";
+
+        String first = "src\\main\\java\\sample\\DB2.json";
 
         try {
             String contents = new String((Files.readAllBytes(Paths.get(first))));
@@ -42,8 +39,8 @@ public class Main extends Application {
 
                 for (JsonNode node : root) {
 
-                    if (node.path("nume_de_utilizator").asText().equals("Felix")) {
-                        ((ObjectNode) node).put("email", "alabala");
+                    if (node.path("nume_de_utilizator").asText().equals("Test1")) {
+                        ((ObjectNode) node).put("parola", "alabala");
                         mapper.writeValue(jsonFile, root);
 
 
@@ -54,10 +51,6 @@ public class Main extends Application {
                 ex.printStackTrace();
             }
 
-
-            // System.out.println(Lista.getJSONObject(1));
-            //   modJO(Lista.getJSONObject(1));
-            // System.out.println(Lista.getJSONObject(1));
         } catch (IOException e) {
             e.printStackTrace();
         }
