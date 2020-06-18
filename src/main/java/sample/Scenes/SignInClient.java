@@ -38,6 +38,11 @@ public class SignInClient {
         GridPane.setConstraints(l24a, 0, 1);
 
         Button listaProg = new Button("Lista Programari");
+        listaProg.setOnAction(e ->
+        {
+            Scene newScene = ListaProgramari.inregis(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
         GridPane.setConstraints(listaProg, 0, 2);
 
         javafx.scene.control.Label l24c = new javafx.scene.control.Label("Test4:");
@@ -139,6 +144,7 @@ public class SignInClient {
             ((ObjectNode) node).put("luna", t4.getText());
             ((ObjectNode) node).put("alte_detalii", t5.getText());
             ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
+            ((ObjectNode) node).put("status", "In asteptare");
             try {
                 ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                 //System.out.println(root.get(0));

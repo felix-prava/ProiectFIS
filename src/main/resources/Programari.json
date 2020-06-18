@@ -6,7 +6,8 @@
     "ziua": "23",
     "luna": "06",
     "alte_detalii": "Nu sunt",
-    "mesaj_doctor": "Necompletat"
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
   },
   {
     "nume_de_utilizator": "Andrei",
@@ -15,6 +16,7 @@
     "ziua": "",
     "luna": "",
     "alte_detalii": "",
-    "mesaj_doctor": "Necompletat"
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
   }
 ]

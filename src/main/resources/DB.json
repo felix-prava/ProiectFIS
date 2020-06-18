@@ -22,5 +22,21 @@
     "email": "andu@yahoo.com",
     "adresa": "Str Carpati, nr 2",
     "profil": ""
+  },
+  {
+    "nume_de_utilizator": "otto",
+    "parola": ".�����F�\r��'z���<��h!��=�L\u001F\u0006<?J�",
+    "rol": "Doctor",
+    "email": "aaaa@yahoo.com",
+    "adresa": "timisoara",
+    "profil": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "aaa",
+    "parola": "�Ea�L;�Φ'\u001A�ҳ$��eNѰ\u0011��_�Cn\u0001\u0000ՠ",
+    "rol": "Client",
+    "email": "aaa",
+    "adresa": "aaa",
+    "profil": "Necompletat"
   }
 ]
