@@ -43,7 +43,7 @@ public class Main extends Application {
                 for (JsonNode node : root) {
 
                     if (node.path("nume_de_utilizator").asText().equals("Felix")) {
-                        ((ObjectNode) node).put("email", "aidaaaaaaaaa");
+                        ((ObjectNode) node).put("email", "alabala");
                         mapper.writeValue(jsonFile, root);
 
 
@@ -68,29 +68,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void modJO(JSONObject job) {
-        Iterator keys = job.keys();
-        while (keys.hasNext()) {
-            String currentKey = (String) keys.next();
-            JSONObject job2 = job.optJSONObject(currentKey);
-            JSONArray jar = job.optJSONArray(currentKey);
-            // If JSON Object
-            if (job2 != null) {
-                modJO(job2);
-            }
-            // If JSON Array
 
-            // If JSON Property
-            else {
-                if (currentKey.equals("email")) {
-                    try {
-                        job.put(currentKey, "merge");
-                    } catch (Exception ex) {
-                    }
-                }
-            }
-        }
-    }
 
 
 }
