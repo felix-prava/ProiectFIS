@@ -18,6 +18,11 @@ public class SignInDoctor {
         Scene sceneInregistrare = new Scene(grid2, 500, 250);
 
         Button programare = new Button("Cereri de programare");
+        programare.setOnAction(e ->
+        {
+            Scene newScene = ListaProgramari.listaProgramariDoctor(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
         GridPane.setConstraints(programare, 0, 0);
 
         javafx.scene.control.Label l24a = new javafx.scene.control.Label("Test2:");

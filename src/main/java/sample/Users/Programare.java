@@ -8,6 +8,7 @@ public class Programare {
     protected String detalii;
     protected String mesaj;
     protected String status;
+    protected String numeClient;
 
     public Programare() {
         this.numeDoctor = "";
@@ -19,7 +20,7 @@ public class Programare {
         this.status = "";
     }
 
-    public Programare(String a, String b, String c, String d, String e, String f, String g) {
+    public Programare(String a, String b, String c, String d, String e, String f, String g, String h) {
         this.numeDoctor = a;
         this.ora = b;
         this.zi = c;
@@ -27,7 +28,14 @@ public class Programare {
         this.detalii = e;
         this.mesaj = f;
         this.status = g;
+        this.numeClient = h;
     }
+
+    public Programare(String a, String b) {
+        this.numeClient = a;
+        this.ora = b;
+    }
+
 
     public String getNumeDoctor() {
         return numeDoctor;

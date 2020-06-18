@@ -25,6 +25,7 @@ public class Main extends Application {
         Scene scene;
         scene = LoginScene.test(primaryStage);
 
+
         String first = "src\\main\\java\\sample\\DB2.json";
 
         try {
