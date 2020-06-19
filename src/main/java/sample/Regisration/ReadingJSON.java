@@ -17,9 +17,6 @@ public class ReadingJSON {
             for (int i = 0; i < Lista.length(); i++) {
 
                 if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(nume)) {
-                    //System.out.println(Lista.getJSONObject(i).getString("parola"));
-                    //System.out.println(parola);
-
                     if (Lista.getJSONObject(i).getString("parola").compareTo(parola) == 0)
                         if (Lista.getJSONObject(i).getString("rol").equals("Doctor"))
                             return 1;

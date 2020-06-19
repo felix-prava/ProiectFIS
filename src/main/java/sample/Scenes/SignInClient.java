@@ -11,9 +11,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class SignInClient {
@@ -61,6 +63,10 @@ public class SignInClient {
         GridPane.setConstraints(text2, 1, 1);
 
         Button ultimaProg = new Button("Ultima programare");
+        ultimaProg.setOnAction(e -> {
+            Scene newScene = ListaProgramari.listaProgramari2(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
         GridPane.setConstraints(ultimaProg, 2, 2);
 
         javafx.scene.control.TextField text4 = new javafx.scene.control.TextField();
@@ -133,32 +139,49 @@ public class SignInClient {
         Button gata = new Button("Gata");
         gata.setOnAction(e ->
         {
-            ObjectMapper mapper = new ObjectMapper();
-            File jsonFile = Paths.get("src\\main\\resources\\Programari.json").toFile();
-            JsonNode node = mapper.createObjectNode();
-            //System.out.println(text1.getText() + " " + text2.getText());
-            ((ObjectNode) node).put("nume_de_utilizator", numeUtilizator);
-            ((ObjectNode) node).put("nume_doctor", t1.getText());
-            ((ObjectNode) node).put("ora", t2.getText());
-            ((ObjectNode) node).put("ziua", t3.getText());
-            ((ObjectNode) node).put("luna", t4.getText());
-            ((ObjectNode) node).put("alte_detalii", t5.getText());
-            ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
-            ((ObjectNode) node).put("status", "In asteptare");
+            String first = "src\\main\\resources\\DB.json";
+            int ok = 0;
             try {
-                ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
-                //System.out.println(root.get(0));
-                root.add(node);
-                mapper.writeValue(jsonFile, root);
-
+                String contents = new String((Files.readAllBytes(Paths.get(first))));
+                JSONArray Lista = new JSONArray(contents);
+                for (int i = 0; i < Lista.length(); i++) {
+                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(t1.getText()))
+                        ok++;
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            AlertBox.display("Programare efectuata", "Programarea a fost realizată cu succes!");
-            //primaryStage.setScene(scene);
 
-            Scene newScene = SignInClient.inregis(primaryStage, scene, numeUtilizator);
-            primaryStage.setScene(newScene);
+            if (ok == 0) {
+                AlertBox.display("Eroare", "Numele acestui doctor este greșit");
+            } else {
+                ObjectMapper mapper = new ObjectMapper();
+                File jsonFile = Paths.get("src\\main\\resources\\Programari.json").toFile();
+                JsonNode node = mapper.createObjectNode();
+                //System.out.println(text1.getText() + " " + text2.getText());
+                ((ObjectNode) node).put("nume_de_utilizator", numeUtilizator);
+                ((ObjectNode) node).put("nume_doctor", t1.getText());
+                ((ObjectNode) node).put("ora", t2.getText());
+                ((ObjectNode) node).put("ziua", t3.getText());
+                ((ObjectNode) node).put("luna", t4.getText());
+                ((ObjectNode) node).put("alte_detalii", t5.getText());
+                ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
+                ((ObjectNode) node).put("status", "In asteptare");
+                try {
+                    ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+                    //System.out.println(root.get(0));
+                    root.add(node);
+                    mapper.writeValue(jsonFile, root);
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                AlertBox.display("Programare efectuata", "Programarea a fost realizată cu succes!");
+
+
+                Scene newScene = SignInClient.inregis(primaryStage, scene, numeUtilizator);
+                primaryStage.setScene(newScene);
+            }
         });
         GridPane.setConstraints(gata, 0, 5);
 
