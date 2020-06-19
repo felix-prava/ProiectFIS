@@ -29,6 +29,10 @@ public class SignInDoctor {
         GridPane.setConstraints(l24a, 0, 1);
 
         Button listaProg = new Button("Acceptare Programare");
+        listaProg.setOnAction(e -> {
+            Scene newScene = AcceptareProgramare.acceptareProgramare(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
         GridPane.setConstraints(listaProg, 0, 2);
 
         javafx.scene.control.Label l24c = new javafx.scene.control.Label("Test4:");
