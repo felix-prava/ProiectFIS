@@ -61,16 +61,19 @@ public class Inregistrare {
         Button ok = new Button("Gata!");
         ok.setOnAction(e ->
         {
-            String first = "src\\main\\resources\\DB.json";
-            boolean OK = false;
-            try {
-                String contents = new String((Files.readAllBytes(Paths.get(first))));
-                //JSONObject o = new JSONObject(contents);
-                JSONArray Lista = new JSONArray(contents);
-                for (int i = 0; i < Lista.length(); i++) {
-                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(text1.getText()))
-                        OK = true;
-                }
+            if (text1.getText().equals("") || text2.getText().equals("") || comboBox.getValue() == null || text4.getText().equals("") || text5.getText().equals(""))
+                AlertBox.display("Cont nou", "Trebuie completate toate căsuțele!");
+            else {
+                String first = "src\\main\\resources\\DB.json";
+                boolean OK = false;
+                try {
+                    String contents = new String((Files.readAllBytes(Paths.get(first))));
+                    //JSONObject o = new JSONObject(contents);
+                    JSONArray Lista = new JSONArray(contents);
+                    for (int i = 0; i < Lista.length(); i++) {
+                        if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(text1.getText()))
+                            OK = true;
+                    }
             } catch (IOException exc) {
                 exc.printStackTrace();
             }
@@ -102,10 +105,12 @@ public class Inregistrare {
                 AlertBox.display("Cont nou", "Înregistrarea a fost realizată cu succes!");
                 primaryStage.setScene(scene);
             }
+            }
         });
         GridPane.setConstraints(ok, 1, 5);
         grid2.getChildren().addAll(l24, l24a, l24b, l24c, l24d, text1, text2, comboBox, text4, text5, ok);
         grid2.setAlignment(Pos.CENTER);
         return sceneInregistrare;
+
     }
 }
