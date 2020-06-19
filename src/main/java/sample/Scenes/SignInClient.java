@@ -69,7 +69,7 @@ public class SignInClient {
         javafx.scene.control.Button ok = new Button("Iesire");
         ok.setOnAction(e ->
         {
-            AlertBox.display("Cont nou24", "Înregistrarea a fost realizată cu succes!!!");
+            AlertBox.display("", "La revedere, sperăm că v-am fost de ajutor!");
             primaryStage.setScene(scene);
         });
         GridPane.setConstraints(ok, 1, 4);
