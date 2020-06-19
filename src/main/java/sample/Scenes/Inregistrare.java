@@ -15,10 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 import sample.Regisration.EncryptPassword;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Inregistrare {
@@ -59,28 +61,47 @@ public class Inregistrare {
         Button ok = new Button("Gata!");
         ok.setOnAction(e ->
         {
-            EncryptPassword encrypt = new EncryptPassword();
-            ObjectMapper mapper = new ObjectMapper();
-            File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
-            JsonNode node = mapper.createObjectNode();
-            System.out.println(text1.getText() + " " + text2.getText());
-            ((ObjectNode) node).put("nume_de_utilizator", text1.getText());
-            ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
-            ((ObjectNode) node).put("rol", comboBox.getValue().toString());
-            ((ObjectNode) node).put("email", text4.getText());
-            ((ObjectNode) node).put("adresa", text5.getText());
-            ((ObjectNode) node).put("profil", "Necompletat");
+            String first = "src\\main\\resources\\DB.json";
+            boolean OK = false;
             try {
-                ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
-                //System.out.println(root.get(0));
-                root.add(node);
-                mapper.writeValue(jsonFile, root);
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                String contents = new String((Files.readAllBytes(Paths.get(first))));
+                //JSONObject o = new JSONObject(contents);
+                JSONArray Lista = new JSONArray(contents);
+                for (int i = 0; i < Lista.length(); i++) {
+                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(text1.getText()))
+                        OK = true;
+                }
+            } catch (IOException exc) {
+                exc.printStackTrace();
             }
-            AlertBox.display("Cont nou", "Înregistrarea a fost realizată cu succes!");
-            primaryStage.setScene(scene);
+            if (OK == true) {
+                System.out.println("Numele a fost deja folosit");
+                AlertBox.display("Cont nou", "Numele de utilizator este deja folosit!");
+            } else {
+                EncryptPassword encrypt = new EncryptPassword();
+                ObjectMapper mapper = new ObjectMapper();
+                File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
+                JsonNode node = mapper.createObjectNode();
+                System.out.println(text1.getText() + " " + text2.getText());
+                ((ObjectNode) node).put("nume_de_utilizator", text1.getText());
+                ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
+                ((ObjectNode) node).put("rol", comboBox.getValue().toString());
+                ((ObjectNode) node).put("email", text4.getText());
+                ((ObjectNode) node).put("adresa", text5.getText());
+                ((ObjectNode) node).put("profil", "Necompletat");
+
+                try {
+                    ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+                    //System.out.println(root.get(0));
+                    root.add(node);
+                    mapper.writeValue(jsonFile, root);
+
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                AlertBox.display("Cont nou", "Înregistrarea a fost realizată cu succes!");
+                primaryStage.setScene(scene);
+            }
         });
         GridPane.setConstraints(ok, 1, 5);
         grid2.getChildren().addAll(l24, l24a, l24b, l24c, l24d, text1, text2, comboBox, text4, text5, ok);

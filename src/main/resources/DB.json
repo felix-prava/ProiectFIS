@@ -38,5 +38,13 @@
     "email": "aaa",
     "adresa": "aaa",
     "profil": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "Andrei1",
+    "parola": "'�6��~=\u0013?��'����/�\u0018�f �\u0012��kX�Ô�",
+    "rol": "Doctor",
+    "email": "dasdas",
+    "adresa": "dasdasd",
+    "profil": "Necompletat"
   }
 ]
