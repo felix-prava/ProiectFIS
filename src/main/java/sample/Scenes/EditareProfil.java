@@ -64,6 +64,10 @@ public class EditareProfil {
         GridPane.setConstraints(salveaza, 0, 0);
 
         Button inapoi = new Button("Inapoi");
+        inapoi.setOnAction(e -> {
+            Scene newScene = SignInDoctor.inregis(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
         GridPane.setConstraints(inapoi, 2, 0);
 
         grid2.getChildren().addAll(editare, salveaza, inapoi);

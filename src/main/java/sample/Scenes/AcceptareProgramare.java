@@ -52,10 +52,14 @@ public class AcceptareProgramare {
         GridPane.setConstraints(l5, 2, 1);
         Label l6 = new Label("Ziua stabilita");
         GridPane.setConstraints(l6, 2, 2);
+        Label l7 = new Label("Mesajul meu");
+        GridPane.setConstraints(l7, 2, 3);
         TextField t5 = new TextField();
         GridPane.setConstraints(t5, 3, 1);
         TextField t6 = new TextField();
         GridPane.setConstraints(t6, 3, 2);
+        TextField t7 = new TextField();
+        GridPane.setConstraints(t7, 3, 3);
 
         Button salvare = new Button("Salveaza");
         salvare.setOnAction(e -> {
@@ -94,6 +98,7 @@ public class AcceptareProgramare {
                                     ) {
                                         ((ObjectNode) node).put("ora", t5.getText());
                                         ((ObjectNode) node).put("ziua", t6.getText());
+                                        ((ObjectNode) node).put("mesaj_doctor", t7.getText());
                                         ((ObjectNode) node).put("status", "Acceptata");
                                         mapper.writeValue(jsonFile, root);
                                     }
@@ -106,7 +111,9 @@ public class AcceptareProgramare {
                         } catch (IOException exc) {
                             exc.printStackTrace();
                         }
-
+                        AlertBox.display("", "Programarea a fost acceptata");
+                        Scene newScene = SignInDoctor.inregis(primaryStage, scene, numeUtilizator);
+                        primaryStage.setScene(newScene);
                     }
 
 
@@ -128,7 +135,7 @@ public class AcceptareProgramare {
         GridPane.setConstraints(inapoi, 2, 4);
 
 
-        grid2.getChildren().addAll(l1, l2, l3, l4, t1, t2, t3, t4, l5, l6, t5, t6, inapoi, salvare);
+        grid2.getChildren().addAll(l1, l2, l3, l4, t1, t2, t3, t4, l5, l6, t5, t6, inapoi, salvare, l7, t7);
         grid2.setAlignment(Pos.CENTER);
         return editareProfil;
     }
