@@ -73,14 +73,26 @@ public class LoginScene {
             //System.out.println(encryptPass);
 
             if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 1) {
+
                 Scene newScene = SignInDoctor.inregis(primaryStage, scene, numeTextField);
                 primaryStage.setScene(newScene);
-                System.out.println("Doctor");
+
+                text1.clear();
+                text1.setPromptText("Username");
+                text2.clear();
+                text2.setPromptText("Parolă");
+
             } else if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 2) {
+
                 Scene newScene = SignInClient.inregis(primaryStage, scene, numeTextField);
                 primaryStage.setScene(newScene);
-                System.out.println("Client");
-            } else System.out.println("Greseala!");
+
+                text1.clear();
+                text1.setPromptText("Username");
+                text2.clear();
+                text2.setPromptText("Parolă");
+
+            } else AlertBox.display("Eroare", "Datele introduse sunt gresite");
 
         });
         GridPane.setConstraints(signIn, 2, 4);

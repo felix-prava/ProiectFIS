@@ -19,7 +19,7 @@ public class AlertBox {
 
         Label l = new Label();
         l.setText(mesaj);
-        Button closeButton = new Button("Inchide fereastra!");
+        Button closeButton = new Button("OK");
         closeButton.setOnAction(e -> window.close());
 
         VBox layout = new VBox(10);

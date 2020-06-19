@@ -4,18 +4,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import sample.Regisration.EncryptPassword;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +29,7 @@ public class EditareProfil {
 
         TextField editare = new TextField();
         GridPane.setConstraints(editare, 1, 0);
-        Button salveaza = new Button("Salveaza!");
+        Button salveaza = new Button("Salveaza");
         salveaza.setOnAction(e ->
         {
             String first = "src/main/resources/DB.json";
@@ -67,7 +62,15 @@ public class EditareProfil {
             primaryStage.setScene(inapoi);
         });
         GridPane.setConstraints(salveaza, 0, 0);
-        grid2.getChildren().addAll(editare, salveaza);
+
+        Button inapoi = new Button("Inapoi");
+        inapoi.setOnAction(e -> {
+            Scene newScene = SignInDoctor.inregis(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
+        GridPane.setConstraints(inapoi, 2, 0);
+
+        grid2.getChildren().addAll(editare, salveaza, inapoi);
         grid2.setAlignment(Pos.CENTER);
         return editareProfil;
     }

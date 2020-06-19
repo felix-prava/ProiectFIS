@@ -12,12 +12,12 @@
   {
     "nume_de_utilizator": "Andrei",
     "nume_doctor": "Felix",
-    "ora": "12",
-    "ziua": "23",
+    "ora": "2423445345",
+    "ziua": "5345345345",
     "luna": "06",
     "alte_detalii": "Nu sunt",
     "mesaj_doctor": "Necompletat",
-    "status": "In asteptare"
+    "status": "Acceptata"
   },
   {
     "nume_de_utilizator": "Andrei",
@@ -42,11 +42,11 @@
   {
     "nume_de_utilizator": "Aida",
     "nume_doctor": "Felix",
-    "ora": "14",
-    "ziua": "29",
+    "ora": "15",
+    "ziua": "12",
     "luna": "06",
     "alte_detalii": "Durere masea",
-    "mesaj_doctor": "Necompletat",
-    "status": "In asteptare"
+    "mesaj_doctor": "Daca poti sa ajungi la 15 fara un sfert",
+    "status": "Acceptata"
   }
 ]
