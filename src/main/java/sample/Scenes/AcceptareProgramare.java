@@ -1,5 +1,9 @@
 package sample.Scenes;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,6 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AcceptareProgramare {
 
@@ -48,7 +58,66 @@ public class AcceptareProgramare {
         GridPane.setConstraints(t6, 3, 2);
 
         Button salvare = new Button("Salveaza");
+        salvare.setOnAction(e -> {
+            int ok = 0;
 
+            String first = "src\\main\\resources\\Programari.json";
+            try {
+                String contents1 = new String((Files.readAllBytes(Paths.get(first))));
+                JSONArray Lista = new JSONArray(contents1);
+                for (int i = 0; i < Lista.length(); i++) {
+
+                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(t1.getText())
+                            && Lista.getJSONObject(i).getString("ora").equals(t2.getText())
+                            && Lista.getJSONObject(i).getString("ziua").equals(t3.getText())
+                            && Lista.getJSONObject(i).getString("luna").equals(t4.getText())
+                            && Lista.getJSONObject(i).getString("nume_doctor").equals(numeUtilizator)
+                            && Lista.getJSONObject(i).getString("status").equals("In asteptare")
+                    ) {
+                        ok++;
+                        try {
+                            String contents = new String((Files.readAllBytes(Paths.get(first))));
+                            ObjectMapper mapper = new ObjectMapper();
+                            File jsonFile = Paths.get(first).toFile();
+                            ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+
+                            try {
+
+                                for (JsonNode node : root) {
+
+                                    if (node.path("nume_de_utilizator").asText().equals(t1.getText())
+                                            && node.path("ora").asText().equals(t2.getText())
+                                            && node.path("ziua").asText().equals(t3.getText())
+                                            && node.path("luna").asText().equals(t4.getText())
+                                            && node.path("nume_doctor").asText().equals(numeUtilizator)
+                                            && node.path("status").asText().equals("In asteptare")
+                                    ) {
+                                        ((ObjectNode) node).put("ora", t5.getText());
+                                        ((ObjectNode) node).put("ziua", t6.getText());
+                                        ((ObjectNode) node).put("status", "Acceptata");
+                                        mapper.writeValue(jsonFile, root);
+                                    }
+                                }
+
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+
+                        } catch (IOException exc) {
+                            exc.printStackTrace();
+                        }
+
+                    }
+
+
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            if (ok == 0)
+                AlertBox.display("", "Datele introduse nu sunt corecte");
+
+        });
         GridPane.setConstraints(salvare, 1, 4);
 
         Button inapoi = new Button("Inapoi");
