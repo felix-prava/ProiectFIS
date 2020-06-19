@@ -28,12 +28,12 @@ public class SignInDoctor {
         javafx.scene.control.Label l24a = new javafx.scene.control.Label("Test2:");
         GridPane.setConstraints(l24a, 0, 1);
 
-        Button listaProg = new Button("Acceptare Programare");
-        listaProg.setOnAction(e -> {
+        Button acceptProg = new Button("Acceptare Programare");
+        acceptProg.setOnAction(e -> {
             Scene newScene = AcceptareProgramare.acceptareProgramare(primaryStage, scene, numeUtilizator);
             primaryStage.setScene(newScene);
         });
-        GridPane.setConstraints(listaProg, 0, 2);
+        GridPane.setConstraints(acceptProg, 0, 2);
 
         javafx.scene.control.Label l24c = new javafx.scene.control.Label("Test4:");
         GridPane.setConstraints(l24c, 0, 3);
@@ -49,8 +49,12 @@ public class SignInDoctor {
         javafx.scene.control.TextField text2 = new javafx.scene.control.TextField();
         GridPane.setConstraints(text2, 1, 1);
 
-        Button ultimaProg = new Button("Refuzare Programare");
-        GridPane.setConstraints(ultimaProg, 2, 2);
+        Button refuzareProg = new Button("Refuzare Programare");
+        refuzareProg.setOnAction(e -> {
+            Scene newScene = RefuzareProgramare.refuzareProgramare(primaryStage, scene, numeUtilizator);
+            primaryStage.setScene(newScene);
+        });
+        GridPane.setConstraints(refuzareProg, 2, 2);
 
         javafx.scene.control.TextField text4 = new javafx.scene.control.TextField();
         GridPane.setConstraints(text4, 1, 3);
@@ -62,7 +66,7 @@ public class SignInDoctor {
             primaryStage.setScene(scene);
         });
         GridPane.setConstraints(ok, 1, 4);
-        grid2.getChildren().addAll(programare, listaProg, profil, ultimaProg, ok);
+        grid2.getChildren().addAll(programare, acceptProg, profil, refuzareProg, ok);
         grid2.setAlignment(Pos.CENTER);
         return sceneInregistrare;
     }

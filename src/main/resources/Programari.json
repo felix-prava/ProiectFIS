@@ -36,8 +36,8 @@
     "ziua": "29",
     "luna": "06",
     "alte_detalii": "Durere masea",
-    "mesaj_doctor": "Necompletat",
-    "status": "In asteptare"
+    "mesaj_doctor": "Nu sunt in oras",
+    "status": "Refuzata"
   },
   {
     "nume_de_utilizator": "Aida",
@@ -48,5 +48,25 @@
     "alte_detalii": "Durere masea",
     "mesaj_doctor": "Daca poti sa ajungi la 15 fara un sfert",
     "status": "Acceptata"
+  },
+  {
+    "nume_de_utilizator": "Andrei",
+    "nume_doctor": "Felix",
+    "ora": "1444",
+    "ziua": "22222",
+    "luna": "33333",
+    "alte_detalii": "nuuuuu",
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
+  },
+  {
+    "nume_de_utilizator": "Andrei",
+    "nume_doctor": "Felix",
+    "ora": "1",
+    "ziua": "1",
+    "luna": "1",
+    "alte_detalii": "1",
+    "mesaj_doctor": "",
+    "status": "Refuzata"
   }
 ]
