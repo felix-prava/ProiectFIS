@@ -48,5 +48,25 @@
     "alte_detalii": "Durere masea",
     "mesaj_doctor": "Necompletat",
     "status": "In asteptare"
+  },
+  {
+    "nume_de_utilizator": "Andrei",
+    "nume_doctor": "",
+    "ora": "",
+    "ziua": "",
+    "luna": "",
+    "alte_detalii": "",
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
+  },
+  {
+    "nume_de_utilizator": "maria",
+    "nume_doctor": "Andrei",
+    "ora": "16",
+    "ziua": "23",
+    "luna": "08",
+    "alte_detalii": "Carie",
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
   }
 ]

@@ -38,5 +38,21 @@
     "email": "aaa",
     "adresa": "aaa",
     "profil": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "maria",
+    "parola": "bn<�^w�r�,k�\u0007�*��\\\b�pP�x�3\u000F�\u001A�W",
+    "rol": "Client",
+    "email": "kk",
+    "adresa": "30 dec",
+    "profil": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "Andrei1",
+    "parola": "���C��\t��儿\u001D�Y����W��>��㔊[\u0015)",
+    "rol": "Client",
+    "email": "aa",
+    "adresa": "aaa",
+    "profil": "Necompletat"
   }
 ]
