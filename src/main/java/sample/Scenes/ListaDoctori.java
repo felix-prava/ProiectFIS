@@ -12,13 +12,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
+import sample.Regisration.FileSystemService;
 import sample.Users.Doctor;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ListaDoctori {
+
+    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "DB.json");
+
     public static Scene inregis(Stage primaryStage, Scene scene, String numeUtilizator) {
 
 
@@ -66,10 +71,12 @@ public class ListaDoctori {
         ObservableList<Doctor> doctori = FXCollections.observableArrayList();
         String first = "src\\main\\resources\\DB.json";
         String contents = null;
+        String contents2 = null;
         try {
             contents = new String((Files.readAllBytes(Paths.get(first))));
+            contents2 = new String((Files.readAllBytes(USERS_PATH)));
 
-            JSONArray Lista = new JSONArray(contents);
+            JSONArray Lista = new JSONArray(contents2);
             for (int i = 0; i < Lista.length(); i++) {
                 if (Lista.getJSONObject(i).getString("rol").equals("Doctor")) {
                     String a = Lista.getJSONObject(i).getString("nume_de_utilizator");

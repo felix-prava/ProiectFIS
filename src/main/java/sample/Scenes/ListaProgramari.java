@@ -12,10 +12,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
+import sample.Regisration.FileSystemService;
 import sample.Users.Programare;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ListaProgramari {
@@ -75,14 +77,18 @@ public class ListaProgramari {
         return scene2;
     }
 
+    private static final Path USERS_PATH2 = FileSystemService.getPathToFile2("config", "Programari.json");
+
     public static ObservableList<Programare> getProgramari(String numeUtilizator) {
         ObservableList<Programare> programari = FXCollections.observableArrayList();
         String first = "src\\main\\resources\\Programari.json";
         String contents = null;
+        String contents2 = null;
         try {
             contents = new String((Files.readAllBytes(Paths.get(first))));
+            contents2 = new String((Files.readAllBytes(USERS_PATH2)));
 
-            JSONArray Lista = new JSONArray(contents);
+            JSONArray Lista = new JSONArray(contents2);
             for (int i = 0; i < Lista.length(); i++) {
                 if (Lista.getJSONObject(i).getString("numeClient").equals(numeUtilizator)) {
                     String a = Lista.getJSONObject(i).getString("nume_doctor");
@@ -162,10 +168,12 @@ public class ListaProgramari {
         ObservableList<Programare> programari = FXCollections.observableArrayList();
         String first = "src\\main\\resources\\Programari.json";
         String contents = null;
+        String contents2 = null;
         try {
             contents = new String((Files.readAllBytes(Paths.get(first))));
+            contents2 = new String((Files.readAllBytes(USERS_PATH2)));
 
-            JSONArray Lista = new JSONArray(contents);
+            JSONArray Lista = new JSONArray(contents2);
             for (int i = Lista.length() - 1; i >= 0; i--) {
                 if (Lista.getJSONObject(i).getString("numeClient").equals(numeUtilizator)) {
                     String a = Lista.getJSONObject(i).getString("nume_doctor");
@@ -246,10 +254,12 @@ public class ListaProgramari {
         ObservableList<Programare> programari = FXCollections.observableArrayList();
         String first = "src\\main\\resources\\Programari.json";
         String contents = null;
+        String contents2 = null;
         try {
             contents = new String((Files.readAllBytes(Paths.get(first))));
+            contents2 = new String((Files.readAllBytes(USERS_PATH2)));
 
-            JSONArray Lista = new JSONArray(contents);
+            JSONArray Lista = new JSONArray(contents2);
             for (int i = 0; i < Lista.length(); i++) {
                 if (Lista.getJSONObject(i).getString("nume_doctor").equals(numeUtilizator)) {
                     String a = Lista.getJSONObject(i).getString("numeClient");

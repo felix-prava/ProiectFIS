@@ -17,13 +17,17 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import sample.Regisration.EncryptPassword;
+import sample.Regisration.FileSystemService;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Inregistrare {
+    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "DB.json");
+
     public static Scene inregis(Stage primaryStage, Scene scene) {
         //Buton Inregistrare + fereastra noua
         GridPane grid2 = new GridPane();
@@ -77,16 +81,17 @@ public class Inregistrare {
             } catch (IOException exc) {
                 exc.printStackTrace();
             }
-            if (OK == true) {
-                AlertBox.display("Cont nou", "Numele de utilizator este deja folosit!");
-            } else {
-                EncryptPassword encrypt = new EncryptPassword();
-                ObjectMapper mapper = new ObjectMapper();
-                File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
-                JsonNode node = mapper.createObjectNode();
-                ((ObjectNode) node).put("nume_de_utilizator", text1.getText());
-                ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
-                ((ObjectNode) node).put("rol", comboBox.getValue().toString());
+                if (OK) {
+                    AlertBox.display("Cont nou", "Numele de utilizator este deja folosit!");
+                } else {
+                    EncryptPassword encrypt = new EncryptPassword();
+                    ObjectMapper mapper = new ObjectMapper();
+                    File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
+                    File jsonFile2 = USERS_PATH.toFile();
+                    JsonNode node = mapper.createObjectNode();
+                    ((ObjectNode) node).put("nume_de_utilizator", text1.getText());
+                    ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
+                    ((ObjectNode) node).put("rol", comboBox.getValue().toString());
                 ((ObjectNode) node).put("email", text4.getText());
                 ((ObjectNode) node).put("adresa", text5.getText());
                 ((ObjectNode) node).put("profil", "Necompletat");
@@ -95,6 +100,10 @@ public class Inregistrare {
                     ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                     root.add(node);
                     mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+
+                    ArrayNode root2 = (ArrayNode) mapper.readTree(jsonFile2);
+                    root2.add(node);
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile2, root);
                     //UserService.persistUsers();
                     //UserService.loadUsersFromFile();
 

@@ -11,13 +11,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import sample.Regisration.FileSystemService;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class EditareProfil {
+    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "DB.json");
+
     public static Scene editareProfil(Stage primaryStage, Scene scene, String numeUtilizator) {
 
         GridPane grid2 = new GridPane();
@@ -37,7 +41,8 @@ public class EditareProfil {
                 String contents = new String((Files.readAllBytes(Paths.get(first))));
                 ObjectMapper mapper = new ObjectMapper();
                 File jsonFile = Paths.get(first).toFile();
-                ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+                File jsonFile2 = USERS_PATH.toFile();
+                ArrayNode root = (ArrayNode) mapper.readTree(jsonFile2);
 
                 try {
 
@@ -45,7 +50,7 @@ public class EditareProfil {
 
                         if (node.path("nume_de_utilizator").asText().equals(numeUtilizator)) {
                             ((ObjectNode) node).put("profil", editare.getText());
-                            mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+                            mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile2, root);
                         }
                     }
 
