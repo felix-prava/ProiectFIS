@@ -5,7 +5,7 @@
     "rol": "Client",
     "email": "ddd@yahoo.com",
     "adresa": "Str Verindi, nr 27",
-    "profil": ""
+    "profil": "Necompletat"
   },
   {
     "nume_de_utilizator": "Felix",
@@ -13,7 +13,7 @@
     "rol": "Doctor",
     "email": "mihai_prava@yahoo.com",
     "adresa": "Bdul Ecaterina Teodoroiu, nr 119",
-    "profil": ""
+    "profil": "L-V 09-18"
   },
   {
     "nume_de_utilizator": "Andrei",
@@ -21,54 +21,22 @@
     "rol": "Client",
     "email": "andu@yahoo.com",
     "adresa": "Str Carpati, nr 2",
-    "profil": ""
-  },
-  {
-    "nume_de_utilizator": "otto",
-    "parola": ".�����F�\r��'z���<��h!��=�L\u001F\u0006<?J�",
-    "rol": "Doctor",
-    "email": "aaaa@yahoo.com",
-    "adresa": "timisoara",
-    "profil": "Sunnt super bun, sunt un doctor super bun"
-  },
-  {
-    "nume_de_utilizator": "aaa",
-    "parola": "�Ea�L;�Φ'\u001A�ҳ$��eNѰ\u0011��_�Cn\u0001\u0000ՠ",
-    "rol": "Client",
-    "email": "aaa",
-    "adresa": "aaa",
-    "profil": "Necompletat"
-  },
-  {
-    "nume_de_utilizator": "Andrei1",
-    "parola": "'�6��~=\u0013?��'����/�\u0018�f �\u0012��kX�Ô�",
-    "rol": "Doctor",
-    "email": "dasdas",
-    "adresa": "dasdasd",
-    "profil": "Necompletat"
-  },
-  {
-    "nume_de_utilizator": "",
-    "parola": "�ǯ~��\t��_76\u001D\u001B\u0016��幍�\f���U7z���a",
-    "rol": "Doctor",
-    "email": "ada",
-    "adresa": "gds",
     "profil": "Necompletat"
   },
   {
     "nume_de_utilizator": "Mihai",
     "parola": "4��g;9���~��t�B!L�]\fX\u0001��\u001D��G��",
-    "rol": "Doctor",
+    "rol": "Client",
     "email": "mihai@upt.ro",
-    "adresa": "Str Eroilor, nr 1",
+    "adresa": "Tg-Jiu",
     "profil": "Necompletat"
   },
   {
-    "nume_de_utilizator": "Adi",
-    "parola": "\b6Ky��\u0001�T��t3�\u000B�Ö��-�r��\u0012��\u00010",
-    "rol": "Client",
-    "email": "edi@yahoo.com",
-    "adresa": "Timisoara",
-    "profil": "Necompletat"
+    "nume_de_utilizator": "Marius",
+    "parola": "���\u001Eod�\u0012�+�\u001A�\u000F*ђ\u0003��A�\u001A��\f_\u001B��",
+    "rol": "Doctor",
+    "email": "aa@yahoo.com",
+    "adresa": "Arad",
+    "profil": "L-S 08:30-16:30"
   }
 ]

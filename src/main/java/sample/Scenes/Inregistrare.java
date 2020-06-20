@@ -78,14 +78,12 @@ public class Inregistrare {
                 exc.printStackTrace();
             }
             if (OK == true) {
-                System.out.println("Numele a fost deja folosit");
                 AlertBox.display("Cont nou", "Numele de utilizator este deja folosit!");
             } else {
                 EncryptPassword encrypt = new EncryptPassword();
                 ObjectMapper mapper = new ObjectMapper();
                 File jsonFile = Paths.get("src\\main\\resources\\DB.json").toFile();
                 JsonNode node = mapper.createObjectNode();
-                System.out.println(text1.getText() + " " + text2.getText());
                 ((ObjectNode) node).put("nume_de_utilizator", text1.getText());
                 ((ObjectNode) node).put("parola", encrypt.encryptPassword(text2.getText(), text1.getText()));
                 ((ObjectNode) node).put("rol", comboBox.getValue().toString());
@@ -95,9 +93,10 @@ public class Inregistrare {
 
                 try {
                     ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
-                    //System.out.println(root.get(0));
                     root.add(node);
                     mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+                    //UserService.persistUsers();
+                    //UserService.loadUsersFromFile();
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

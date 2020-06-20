@@ -45,7 +45,7 @@ public class EditareProfil {
 
                         if (node.path("nume_de_utilizator").asText().equals(numeUtilizator)) {
                             ((ObjectNode) node).put("profil", editare.getText());
-                            mapper.writeValue(jsonFile, root);
+                            mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
                         }
                     }
 

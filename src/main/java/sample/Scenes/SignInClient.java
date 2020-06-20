@@ -144,42 +144,46 @@ public class SignInClient {
                 String contents = new String((Files.readAllBytes(Paths.get(first))));
                 JSONArray Lista = new JSONArray(contents);
                 for (int i = 0; i < Lista.length(); i++) {
-                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(t1.getText()))
+                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(t1.getText()) && Lista.getJSONObject(i).getString("rol").equals("Doctor"))
                         ok++;
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
-            if (ok == 0) {
-                AlertBox.display("Eroare", "Numele acestui doctor este greșit");
+            if (t1.getText().equals("") || t2.getText().equals("") ||
+                    t3.getText().equals("") || t4.getText().equals("")) {
+                AlertBox.display("Eroarare", "Trebuie completate toate casutele");
             } else {
-                ObjectMapper mapper = new ObjectMapper();
-                File jsonFile = Paths.get("src\\main\\resources\\Programari.json").toFile();
-                JsonNode node = mapper.createObjectNode();
-                //System.out.println(text1.getText() + " " + text2.getText());
-                ((ObjectNode) node).put("nume_de_utilizator", numeUtilizator);
-                ((ObjectNode) node).put("nume_doctor", t1.getText());
-                ((ObjectNode) node).put("ora", t2.getText());
-                ((ObjectNode) node).put("ziua", t3.getText());
-                ((ObjectNode) node).put("luna", t4.getText());
-                ((ObjectNode) node).put("alte_detalii", t5.getText());
-                ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
-                ((ObjectNode) node).put("status", "In asteptare");
-                try {
-                    ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
-                    //System.out.println(root.get(0));
-                    root.add(node);
-                    mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+                if (ok == 0) {
+                    AlertBox.display("Eroare", "Numele acestui doctor este greșit");
+                } else {
+                    ObjectMapper mapper = new ObjectMapper();
+                    File jsonFile = Paths.get("src\\main\\resources\\Programari.json").toFile();
+                    JsonNode node = mapper.createObjectNode();
+                    //System.out.println(text1.getText() + " " + text2.getText());
+                    ((ObjectNode) node).put("numeClient", numeUtilizator);
+                    ((ObjectNode) node).put("nume_doctor", t1.getText());
+                    ((ObjectNode) node).put("ora", t2.getText());
+                    ((ObjectNode) node).put("ziua", t3.getText());
+                    ((ObjectNode) node).put("luna", t4.getText());
+                    ((ObjectNode) node).put("alte_detalii", t5.getText());
+                    ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
+                    ((ObjectNode) node).put("status", "In asteptare");
+                    try {
+                        ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+                        root.add(node);
+                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+                        //UserService.persistUsers2();
 
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    AlertBox.display("Programare efectuata", "Programarea a fost realizată cu succes!");
+
+
+                    Scene newScene = SignInClient.inregis(primaryStage, scene, numeUtilizator);
+                    primaryStage.setScene(newScene);
                 }
-                AlertBox.display("Programare efectuata", "Programarea a fost realizată cu succes!");
-
-
-                Scene newScene = SignInClient.inregis(primaryStage, scene, numeUtilizator);
-                primaryStage.setScene(newScene);
             }
         });
         GridPane.setConstraints(gata, 0, 5);

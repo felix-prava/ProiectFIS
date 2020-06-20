@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Persoana {
 
-    protected String user;
+    protected String nume_de_utilizator;
     protected String parola;
     protected String rol;
     protected String email;
@@ -12,7 +12,7 @@ public class Persoana {
     protected String profil;
 
     public Persoana() {
-        this.user = "";
+        this.nume_de_utilizator = "";
         this.parola = "";
         this.rol = "Client";
         this.email = "";
@@ -21,7 +21,7 @@ public class Persoana {
     }
 
     public Persoana(String a, String b, String c) {
-        this.user = a;
+        this.nume_de_utilizator = a;
         this.parola = b;
         this.rol = c;
         this.email = "";
@@ -30,7 +30,7 @@ public class Persoana {
     }
 
     public Persoana(String a, String b, String c, String d, String e, String f) {
-        this.user = a;
+        this.nume_de_utilizator = a;
         this.parola = b;
         this.rol = c;
         this.email = d;
@@ -39,17 +39,15 @@ public class Persoana {
     }
 
     public boolean verificareUser(String username, String parolaIntrodusa) {
-        if (getUser().equals(username) && getParola().equals(parolaIntrodusa))
-            return true;
-        else return false;
+        return getUser().equals(username) && getParola().equals(parolaIntrodusa);
     }
 
     public String getUser() {
-        return user;
+        return nume_de_utilizator;
     }
 
     public void setUser(String user) {
-        this.user = user;
+        this.nume_de_utilizator = user;
     }
 
     public String getParola() {
@@ -97,7 +95,7 @@ public class Persoana {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Persoana persoana = (Persoana) o;
-        return Objects.equals(user, persoana.user) &&
+        return Objects.equals(nume_de_utilizator, persoana.nume_de_utilizator) &&
                 Objects.equals(parola, persoana.parola) &&
                 Objects.equals(rol, persoana.rol) &&
                 Objects.equals(email, persoana.email) &&
@@ -107,6 +105,6 @@ public class Persoana {
 
     @Override
     public int hashCode() {
-        return Objects.hash(user, parola, rol, email, adresa, profil);
+        return Objects.hash(nume_de_utilizator, parola, rol, email, adresa, profil);
     }
 }

@@ -1,7 +1,10 @@
 package sample.Regisration;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import org.apache.commons.io.FileUtils;
 import sample.Users.Persoana;
 import sample.Users.Programare;
@@ -25,10 +28,12 @@ public class UserService {
         }
 
 
-        //ObjectMapper objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        objectMapper.setVisibilityChecker(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 
-        //clienti = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<Persoana>>() {
-        //});
+        clienti = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<Persoana>>() {
+        });
 
 
         if (!Files.exists(USERS_PATH2)) {
@@ -36,8 +41,30 @@ public class UserService {
         }
 
         ObjectMapper objectMapper2 = new ObjectMapper();
+        objectMapper2.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        objectMapper2.setVisibilityChecker(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 
         programari = objectMapper2.readValue(USERS_PATH2.toFile(), new TypeReference<List<Programare>>() {
         });
+
+
+    }
+
+    public static void persistUsers() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(USERS_PATH.toFile(), clienti);
+        } catch (IOException e) {
+            throw new CouldNotWriteUsersException();
+        }
+    }
+
+    public static void persistUsers2() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(USERS_PATH2.toFile(), programari);
+        } catch (IOException e) {
+            throw new CouldNotWriteUsersException();
+        }
     }
 }
