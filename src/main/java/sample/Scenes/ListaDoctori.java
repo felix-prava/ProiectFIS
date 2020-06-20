@@ -82,7 +82,6 @@ public class ListaDoctori {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        doctori.add(new Doctor("a", "b", "c", "d"));
         return doctori;
     }
 

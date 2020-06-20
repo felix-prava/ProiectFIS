@@ -71,7 +71,7 @@ public class AcceptareProgramare {
                 JSONArray Lista = new JSONArray(contents1);
                 for (int i = 0; i < Lista.length(); i++) {
 
-                    if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(t1.getText())
+                    if (Lista.getJSONObject(i).getString("numeClient").equals(t1.getText())
                             && Lista.getJSONObject(i).getString("ora").equals(t2.getText())
                             && Lista.getJSONObject(i).getString("ziua").equals(t3.getText())
                             && Lista.getJSONObject(i).getString("luna").equals(t4.getText())
@@ -89,7 +89,7 @@ public class AcceptareProgramare {
 
                                 for (JsonNode node : root) {
 
-                                    if (node.path("nume_de_utilizator").asText().equals(t1.getText())
+                                    if (node.path("numeClient").asText().equals(t1.getText())
                                             && node.path("ora").asText().equals(t2.getText())
                                             && node.path("ziua").asText().equals(t3.getText())
                                             && node.path("luna").asText().equals(t4.getText())
@@ -100,7 +100,7 @@ public class AcceptareProgramare {
                                         ((ObjectNode) node).put("ziua", t6.getText());
                                         ((ObjectNode) node).put("mesaj_doctor", t7.getText());
                                         ((ObjectNode) node).put("status", "Acceptata");
-                                        mapper.writeValue(jsonFile, root);
+                                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
                                     }
                                 }
 

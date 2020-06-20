@@ -84,7 +84,7 @@ public class ListaProgramari {
 
             JSONArray Lista = new JSONArray(contents);
             for (int i = 0; i < Lista.length(); i++) {
-                if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(numeUtilizator)) {
+                if (Lista.getJSONObject(i).getString("numeClient").equals(numeUtilizator)) {
                     String a = Lista.getJSONObject(i).getString("nume_doctor");
                     String b = Lista.getJSONObject(i).getString("ora");
                     String c = Lista.getJSONObject(i).getString("ziua");
@@ -152,7 +152,7 @@ public class ListaProgramari {
         VBox vBox = new VBox();
         vBox.getChildren().addAll(table, hBox);
 
-        Scene scene2 = new Scene(vBox, 750, 100);
+        Scene scene2 = new Scene(vBox, 750, 120);
 
         return scene2;
     }
@@ -167,7 +167,7 @@ public class ListaProgramari {
 
             JSONArray Lista = new JSONArray(contents);
             for (int i = Lista.length() - 1; i >= 0; i--) {
-                if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(numeUtilizator)) {
+                if (Lista.getJSONObject(i).getString("numeClient").equals(numeUtilizator)) {
                     String a = Lista.getJSONObject(i).getString("nume_doctor");
                     String b = Lista.getJSONObject(i).getString("ora");
                     String c = Lista.getJSONObject(i).getString("ziua");
@@ -252,7 +252,7 @@ public class ListaProgramari {
             JSONArray Lista = new JSONArray(contents);
             for (int i = 0; i < Lista.length(); i++) {
                 if (Lista.getJSONObject(i).getString("nume_doctor").equals(numeUtilizator)) {
-                    String a = Lista.getJSONObject(i).getString("nume_de_utilizator");
+                    String a = Lista.getJSONObject(i).getString("numeClient");
                     String b = Lista.getJSONObject(i).getString("ora");
                     String c = Lista.getJSONObject(i).getString("ziua");
                     String d = Lista.getJSONObject(i).getString("luna");

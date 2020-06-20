@@ -1,6 +1,8 @@
 package sample.Users;
 
 public class Programare {
+
+    protected String numeClient;
     protected String numeDoctor;
     protected String ora;
     protected String zi;
@@ -8,7 +10,7 @@ public class Programare {
     protected String detalii;
     protected String mesaj;
     protected String status;
-    protected String numeClient;
+
 
     public Programare() {
         this.numeClient = "";

@@ -1,72 +1,42 @@
 [
   {
-    "nume_de_utilizator": "Andrei",
-    "nume_doctor": "Felix1",
+    "numeClient": "Mihai",
+    "nume_doctor": "Felix",
     "ora": "12",
-    "ziua": "23",
-    "luna": "06",
-    "alte_detalii": "Nu sunt",
-    "mesaj_doctor": "Necompletat",
-    "status": "In asteptare"
-  },
-  {
-    "nume_de_utilizator": "Andrei",
-    "nume_doctor": "Felix",
-    "ora": "2423445345",
-    "ziua": "5345345345",
-    "luna": "06",
-    "alte_detalii": "Nu sunt",
-    "mesaj_doctor": "Necompletat",
-    "status": "Acceptata"
-  },
-  {
-    "nume_de_utilizator": "Andrei",
-    "nume_doctor": "Felix2",
-    "ora": "14",
-    "ziua": "29",
-    "luna": "06",
-    "alte_detalii": "Durere picior",
-    "mesaj_doctor": "Necompletat",
-    "status": "In asteptare"
-  },
-  {
-    "nume_de_utilizator": "Andrei",
-    "nume_doctor": "Felix",
-    "ora": "14",
-    "ziua": "29",
-    "luna": "06",
-    "alte_detalii": "Durere masea",
-    "mesaj_doctor": "Nu sunt in oras",
-    "status": "Refuzata"
-  },
-  {
-    "nume_de_utilizator": "Aida",
-    "nume_doctor": "Felix",
-    "ora": "15",
     "ziua": "12",
-    "luna": "06",
-    "alte_detalii": "Durere masea",
-    "mesaj_doctor": "Daca poti sa ajungi la 15 fara un sfert",
-    "status": "Acceptata"
+    "luna": "12",
+    "alte_detalii": "12",
+    "mesaj_doctor": "TI-am acceptat alta programare",
+    "status": "Refuzata"
   },
   {
-    "nume_de_utilizator": "Andrei",
+    "numeClient": "Andrei",
     "nume_doctor": "Felix",
-    "ora": "1444",
-    "ziua": "22222",
-    "luna": "33333",
-    "alte_detalii": "nuuuuu",
+    "ora": "12",
+    "ziua": "12",
+    "luna": "12",
+    "alte_detalii": "",
     "mesaj_doctor": "Necompletat",
     "status": "In asteptare"
   },
   {
-    "nume_de_utilizator": "Andrei",
+    "numeClient": "Andrei",
+    "nume_doctor": "Marius",
+    "ora": "12",
+    "ziua": "13",
+    "luna": "06",
+    "alte_detalii": "Durere de masea",
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
+  },
+  {
+    "numeClient": "Andrei",
     "nume_doctor": "Felix",
-    "ora": "1",
-    "ziua": "1",
-    "luna": "1",
-    "alte_detalii": "1",
-    "mesaj_doctor": "",
-    "status": "Refuzata"
+    "ora": "10",
+    "ziua": "01",
+    "luna": "07",
+    "alte_detalii": "Consultatie",
+    "mesaj_doctor": "Necompletat",
+    "status": "In asteptare"
   }
 ]

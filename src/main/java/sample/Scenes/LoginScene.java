@@ -10,9 +10,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 import sample.Regisration.EncryptPassword;
 import sample.Regisration.ReadingJSON;
 import sample.Users.Persoana;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class LoginScene {
     public static Scene test(Stage primaryStage) {
@@ -69,8 +74,6 @@ public class LoginScene {
             user.setUser(numeTextField);
             user.setParola(encryptPass);
 
-            System.out.println(user.getUser() + "+" + user.getParola());
-            //System.out.println(encryptPass);
 
             if (ReadingJSON.citireSignIn(numeTextField, encryptPass) == 1) {
 
@@ -115,7 +118,22 @@ public class LoginScene {
         //Buton Gata! + mesaj corespunzator
         parola_Uitata.setOnAction(e ->
                 {
-                    if (!usernameParola.getText().equals("")) {
+                    String first = "src\\main\\resources\\DB.json";
+                    int ok = 0;
+                    try {
+                        String contents = new String((Files.readAllBytes(Paths.get(first))));
+                        JSONArray Lista = new JSONArray(contents);
+                        for (int i = 0; i < Lista.length(); i++) {
+                            if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(usernameParola.getText()))
+                                ok++;
+
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+
+
+                    if (!usernameParola.getText().equals("") && ok > 0) {
                         AlertBox.display("Resetare parola", "Ti-a fost trimis un mail de resetare parola la acest username!");
                         primaryStage.setScene(scene);
                     } else
