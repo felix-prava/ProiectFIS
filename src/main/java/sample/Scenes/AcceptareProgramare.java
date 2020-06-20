@@ -72,7 +72,7 @@ public class AcceptareProgramare {
             String first = "src\\main\\resources\\Programari.json";
             try {
                 String contents1 = new String((Files.readAllBytes(Paths.get(first))));
-                String contents2 = new String((Files.readAllBytes(USERS_PATH2)));
+                String contents2 = new String(Files.readAllBytes(USERS_PATH2));
                 JSONArray Lista = new JSONArray(contents2);
                 JSONArray Lista2 = new JSONArray(contents1);
                 for (int i = 0; i < Lista.length(); i++) {
