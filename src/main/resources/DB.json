@@ -54,5 +54,21 @@
     "email": "ada",
     "adresa": "gds",
     "profil": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "Mihai",
+    "parola": "4��g;9���~��t�B!L�]\fX\u0001��\u001D��G��",
+    "rol": "Doctor",
+    "email": "mihai@upt.ro",
+    "adresa": "Str Eroilor, nr 1",
+    "profil": "Necompletat"
+  },
+  {
+    "nume_de_utilizator": "Adi",
+    "parola": "\b6Ky��\u0001�T��t3�\u000B�Ö��-�r��\u0012��\u00010",
+    "rol": "Client",
+    "email": "edi@yahoo.com",
+    "adresa": "Timisoara",
+    "profil": "Necompletat"
   }
 ]

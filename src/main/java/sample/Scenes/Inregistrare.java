@@ -97,7 +97,7 @@ public class Inregistrare {
                     ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                     //System.out.println(root.get(0));
                     root.add(node);
-                    mapper.writeValue(jsonFile, root);
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

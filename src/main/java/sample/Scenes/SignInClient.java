@@ -55,7 +55,6 @@ public class SignInClient {
         {
             Scene newScene = ListaDoctori.inregis(primaryStage, scene, numeUtilizator);
             primaryStage.setScene(newScene);
-            System.out.println("Alabalalalala");
         });
         GridPane.setConstraints(listaDoctori, 2, 0);
 
@@ -171,7 +170,7 @@ public class SignInClient {
                     ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
                     //System.out.println(root.get(0));
                     root.add(node);
-                    mapper.writeValue(jsonFile, root);
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

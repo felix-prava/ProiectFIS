@@ -8,10 +8,10 @@ public class Programare {
     protected String detalii;
     protected String mesaj;
     protected String status;
-    protected String numeClient;
+    protected String nume_de_utilizator;
 
     public Programare() {
-        this.numeClient = "";
+        this.nume_de_utilizator = "";
         this.numeDoctor = "";
         this.ora = "";
         this.zi = "";
@@ -29,20 +29,20 @@ public class Programare {
         this.detalii = e;
         this.mesaj = f;
         this.status = g;
-        this.numeClient = h;
+        this.nume_de_utilizator = h;
     }
 
     public Programare(String a, String b) {
-        this.numeClient = a;
+        this.nume_de_utilizator = a;
         this.ora = b;
     }
 
     public String getNumeClient() {
-        return numeClient;
+        return nume_de_utilizator;
     }
 
     public void setNumeClient(String numeClient) {
-        this.numeClient = numeClient;
+        this.nume_de_utilizator = numeClient;
     }
 
     public String getNumeDoctor() {
