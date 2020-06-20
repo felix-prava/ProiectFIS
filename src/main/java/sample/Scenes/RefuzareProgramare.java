@@ -13,13 +13,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.json.JSONArray;
+import sample.Regisration.FileSystemService;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class RefuzareProgramare {
+
+    private static final Path USERS_PATH2 = FileSystemService.getPathToFile2("config", "Programari.json");
 
     public static Scene refuzareProgramare(Stage primaryStage, Scene scene, String numeUtilizator) {
 
@@ -63,7 +67,9 @@ public class RefuzareProgramare {
             String first = "src\\main\\resources\\Programari.json";
             try {
                 String contents1 = new String((Files.readAllBytes(Paths.get(first))));
-                JSONArray Lista = new JSONArray(contents1);
+                String contents11 = new String(Files.readAllBytes(USERS_PATH2));
+                JSONArray Lista = new JSONArray(contents11);
+                JSONArray Lista2 = new JSONArray(contents1);
                 for (int i = 0; i < Lista.length(); i++) {
 
                     if (Lista.getJSONObject(i).getString("numeClient").equals(t1.getText())
@@ -77,8 +83,11 @@ public class RefuzareProgramare {
                         try {
                             String contents = new String((Files.readAllBytes(Paths.get(first))));
                             ObjectMapper mapper = new ObjectMapper();
+                            ObjectMapper mapper2 = new ObjectMapper();
                             File jsonFile = Paths.get(first).toFile();
-                            ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+                            File jsonFile2 = USERS_PATH2.toFile();
+                            ArrayNode root = (ArrayNode) mapper.readTree(jsonFile2);
+                            ArrayNode root2 = (ArrayNode) mapper2.readTree(jsonFile);
 
                             try {
 
@@ -93,7 +102,8 @@ public class RefuzareProgramare {
                                     ) {
                                         ((ObjectNode) node).put("mesaj_doctor", t7.getText());
                                         ((ObjectNode) node).put("status", "Refuzata");
-                                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+                                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile2, root);
+                                        mapper2.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root2);
                                     }
                                 }
 

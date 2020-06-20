@@ -12,12 +12,12 @@
   {
     "numeClient": "Andrei",
     "nume_doctor": "Felix",
-    "ora": "12",
+    "ora": "14:15",
     "ziua": "12",
     "luna": "12",
     "alte_detalii": "",
-    "mesaj_doctor": "Necompletat",
-    "status": "In asteptare"
+    "mesaj_doctor": "",
+    "status": "Acceptata"
   },
   {
     "numeClient": "Andrei",

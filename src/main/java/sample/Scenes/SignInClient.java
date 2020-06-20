@@ -12,13 +12,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.json.JSONArray;
+import sample.Regisration.FileSystemService;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class SignInClient {
+
+    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "DB.json");
+    private static final Path USERS_PATH2 = FileSystemService.getPathToFile2("config", "Programari.json");
 
     public static Scene inregis(Stage primaryStage, Scene scene, String numeUtilizator) {
 
@@ -142,7 +147,8 @@ public class SignInClient {
             int ok = 0;
             try {
                 String contents = new String((Files.readAllBytes(Paths.get(first))));
-                JSONArray Lista = new JSONArray(contents);
+                String contents2 = new String(Files.readAllBytes(USERS_PATH));
+                JSONArray Lista = new JSONArray(contents2);
                 for (int i = 0; i < Lista.length(); i++) {
                     if (Lista.getJSONObject(i).getString("nume_de_utilizator").equals(t1.getText()) && Lista.getJSONObject(i).getString("rol").equals("Doctor"))
                         ok++;
@@ -159,8 +165,9 @@ public class SignInClient {
                 } else {
                     ObjectMapper mapper = new ObjectMapper();
                     File jsonFile = Paths.get("src\\main\\resources\\Programari.json").toFile();
+                    File jsonFile2 = USERS_PATH2.toFile();
                     JsonNode node = mapper.createObjectNode();
-                    //System.out.println(text1.getText() + " " + text2.getText());
+
                     ((ObjectNode) node).put("numeClient", numeUtilizator);
                     ((ObjectNode) node).put("nume_doctor", t1.getText());
                     ((ObjectNode) node).put("ora", t2.getText());
@@ -170,9 +177,13 @@ public class SignInClient {
                     ((ObjectNode) node).put("mesaj_doctor", "Necompletat");
                     ((ObjectNode) node).put("status", "In asteptare");
                     try {
-                        ArrayNode root = (ArrayNode) mapper.readTree(jsonFile);
+                        ArrayNode root = (ArrayNode) mapper.readTree(jsonFile2);
                         root.add(node);
-                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root);
+                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile2, root);
+
+                        ArrayNode root2 = (ArrayNode) mapper.readTree(jsonFile);
+                        root2.add(node);
+                        mapper.writerWithDefaultPrettyPrinter().writeValue(jsonFile, root2);
                         //UserService.persistUsers2();
 
                     } catch (IOException ex) {

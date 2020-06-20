@@ -12,14 +12,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import sample.Regisration.EncryptPassword;
+import sample.Regisration.FileSystemService;
 import sample.Regisration.ReadingJSON;
 import sample.Users.Persoana;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class LoginScene {
+
+    private static final Path USERS_PATH = FileSystemService.getPathToFile("config", "DB.json");
+
     public static Scene test(Stage primaryStage) {
 
         //Prima fereastra(cea de inceput)
